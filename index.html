@@ -650,7 +650,28 @@
         </div>
     </div>
 </footer>
+<script>
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        setTimeout(function() {
+            preloader.classList.add('hidden');
+            document.body.classList.add('loaded');
+            setTimeout(function() { preloader.style.display = 'none'; }, 300);
+        }, 800);
+    });
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
 <a href="#" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"><i class="fas fa-arrow-up"></i></a>
 <script src="protection.js"></script>
 <script>
