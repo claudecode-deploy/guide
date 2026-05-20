@@ -3,653 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Embrace AI | Soft Intelligence That Holds You</title>
-    <meta name="description" content="Embrace AI brings soft, holding intelligence to your world. Gentle, intuitive, and beautifully human — like a warm embrace on a cool day.">
-    <meta name="keywords" content="embrace AI, soft hold, gentle intelligence, peach warmth, ethical AI">
-    <meta name="author" content="Embrace Labs">
+    <title>Helion AI · Intelligence for the Curious</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; color: #111827; line-height: 1.5; scroll-behavior: smooth; opacity: 0; transition: opacity 0.3s ease; }
+        body.loaded { opacity: 1; }
 
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background: #fefaf7;
-            color: #3d2b1d;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-        }
+        .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.3s ease; }
+        .preloader.hidden { opacity: 0; pointer-events: none; }
+        .preloader-spinner { width: 44px; height: 44px; border: 3px solid #fef3c7; border-top-color: #f97316; border-radius: 50%; animation: spin 0.6s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         :root {
-            --embrace-light: #fff0e8;
-            --embrace-soft: #ffe0cc;
-            --embrace-glow: #ffccae;
-            --embrace-warm: #f5a06b;
-            --embrace-deep: #c45a2e;
-            --shadow-soft: 0 12px 28px rgba(196, 90, 46, 0.05);
-            --glow-soft: 0 0 28px rgba(245, 160, 107, 0.28);
-            --radius-card: 32px;
+            --peach: #f97316;
+            --peach-dark: #ea580c;
+            --peach-soft: #fed7aa;
+            --peach-bg: #fff7ed;
+            --peach-muted: #ffedd5;
+            --border: #e5e7eb;
+            --text-muted: #6b7280;
+            --radius: 28px;
+            --radius-sm: 18px;
         }
-
-        /* Embrace pattern - overlapping circles */
-        .embrace-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background-image: radial-gradient(circle at 20% 30%, rgba(245, 160, 107, 0.05) 4px, transparent 4px);
-            background-size: 28px 28px;
-            z-index: 0;
-        }
-        .embrace-pattern::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 60%, rgba(255, 204, 174, 0.04) 3px, transparent 3px);
-            background-size: 32px 32px;
-            pointer-events: none;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: rgba(254, 250, 247, 0.94);
-            backdrop-filter: blur(14px);
-            position: sticky;
-            top: 0;
-            z-index: 101;
-            border-bottom: 1px solid var(--embrace-soft);
-        }
-
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.9rem 0;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(125deg, #c45a2e, #f5a06b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.01em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 600;
-            color: #8a644c;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--embrace-deep);
-        }
-
-        .btn-embrace {
-            background: linear-gradient(115deg, var(--embrace-deep), var(--embrace-warm));
-            padding: 0.5rem 1.6rem;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-            box-shadow: 0 2px 8px rgba(196, 90, 46, 0.12);
-            display: inline-block;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-embrace:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(196, 90, 46, 0.2);
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+        
+        .navbar { background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; flex-wrap: wrap; gap: 1rem; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: #111827; }
+        .logo span { color: var(--peach); }
+        .nav-links { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: #4b5563; transition: 0.2s; }
+        .nav-links a:hover { color: var(--peach); }
+        .btn-primary { background: var(--peach); padding: 0.6rem 1.5rem; border-radius: 100px; color: white; font-weight: 600; text-decoration: none; transition: 0.2s; display: inline-block; }
+        .btn-primary:hover { background: var(--peach-dark); transform: translateY(-2px); }
+        .btn-outline { border: 1px solid var(--border); padding: 0.6rem 1.5rem; border-radius: 100px; background: white; font-weight: 500; text-decoration: none; color: #111827; display: inline-block; }
+        .btn-outline:hover { border-color: var(--peach); background: var(--peach-bg); }
 
         /* Hero */
-        .hero {
-            padding: 5rem 0 6rem;
-            background: radial-gradient(ellipse at 45% 30%, var(--embrace-glow) 0%, var(--embrace-light) 45%, #fefaf7 100%);
-            position: relative;
-            overflow: hidden;
-        }
+        .hero { padding: 5rem 0; background: linear-gradient(125deg, var(--peach-bg) 0%, #ffffff 65%); text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; max-width: 800px; margin: 0 auto 1rem; letter-spacing: -0.02em; }
+        .hero-highlight { color: var(--peach); }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -5%;
-            width: 55%;
-            height: 55%;
-            background: radial-gradient(circle, rgba(245, 160, 107, 0.1), transparent 70%);
-            filter: blur(45px);
-            pointer-events: none;
-        }
+        /* Badge Cards */
+        .badge-cards { padding: 4rem 0; }
+        .badge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .badge-card { background: white; border-radius: var(--radius-sm); padding: 1.8rem; border: 1px solid var(--border); transition: 0.2s; position: relative; }
+        .badge-card:hover { transform: translateY(-5px); border-color: var(--peach-soft); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08); }
+        .badge { position: absolute; top: 1rem; right: 1rem; background: var(--peach-bg); color: var(--peach); font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 100px; font-weight: 600; }
+        .badge-icon { width: 50px; height: 50px; background: var(--peach-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .badge-icon i { font-size: 1.5rem; color: var(--peach); }
 
-        .hero-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 3rem;
-            position: relative;
-            z-index: 2;
-        }
+        /* Video Preview */
+        .video-preview { padding: 4rem 0; background: var(--peach-bg); }
+        .video-container { max-width: 900px; margin: 0 auto; background: #1e293b; border-radius: var(--radius); padding: 4rem 2rem; text-align: center; cursor: pointer; transition: 0.2s; }
+        .video-container:hover { background: var(--peach-dark); }
+        .video-container i { font-size: 4rem; color: white; margin-bottom: 1rem; display: block; }
+        .video-container p { color: white; font-size: 1.2rem; }
 
-        .hero-text {
-            flex: 1;
-        }
+        /* Testimonials 2 rows */
+        .testimonials-2row { padding: 5rem 0; }
+        .testimonials-row { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; justify-content: center; }
+        .testimonial-small { flex: 1; min-width: 280px; background: white; border-radius: var(--radius-sm); padding: 1.5rem; border: 1px solid var(--border); }
+        .testimonial-small i { color: var(--peach); margin-bottom: 0.5rem; display: block; font-size: 1.2rem; }
+        .testimonial-small .author { margin-top: 1rem; font-weight: 600; }
+        .testimonial-small .role { font-size: 0.7rem; color: var(--text-muted); }
 
-        .hero-tag {
-            background: rgba(196, 90, 46, 0.1);
-            border: 1px solid var(--embrace-soft);
-            border-radius: 50px;
-            padding: 0.3rem 1rem;
-            display: inline-block;
-            font-weight: 600;
-            font-size: 0.75rem;
-            color: var(--embrace-deep);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text h1 {
-            font-size: 3.6rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.2rem;
-            color: #3d2b1d;
-        }
-
-        .embrace-word {
-            background: linear-gradient(135deg, var(--embrace-deep), var(--embrace-warm));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #9a735b;
-            max-width: 90%;
-            margin-bottom: 2rem;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--embrace-deep);
-        }
-
-        .hero-visual {
-            flex: 1;
-            text-align: center;
-            background: rgba(255, 242, 234, 0.55);
-            backdrop-filter: blur(8px);
-            border-radius: 56px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--embrace-soft);
-        }
-
-        .btn-primary {
-            background: linear-gradient(115deg, var(--embrace-deep), var(--embrace-warm));
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            display: inline-block;
-            text-decoration: none;
-            transition: 0.2s;
-            box-shadow: var(--shadow-soft);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(196, 90, 46, 0.2);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #3d2b1d;
-            margin-bottom: 0.6rem;
-        }
-
-        .section-header p {
-            color: #9a735b;
-            max-width: 580px;
-            margin: 0 auto;
-        }
-
-        /* Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .embrace-card {
-            background: rgba(255, 242, 234, 0.7);
-            backdrop-filter: blur(4px);
-            border-radius: var(--radius-card);
-            padding: 2rem 1.8rem;
-            border: 1px solid var(--embrace-soft);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
-            cursor: pointer;
-        }
-
-        .embrace-card:hover {
-            transform: translateY(-7px);
-            border-color: var(--embrace-glow);
-            box-shadow: var(--glow-soft);
-            background: rgba(255, 248, 242, 0.92);
-        }
-
-        .card-icon {
-            font-size: 2.4rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Hold row */
-        .hold-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            background: var(--embrace-light);
-            border-radius: 52px;
-            padding: 2.5rem;
-            border: 1px solid var(--embrace-soft);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .hold-cell {
-            flex: 1;
-            text-align: center;
-            padding: 0.6rem;
-        }
+        /* Blog with avatars */
+        .blog-avatars { padding: 5rem 0; background: #f9fafb; }
+        .blog-avatar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .blog-avatar-card { background: white; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); transition: 0.2s; }
+        .blog-avatar-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1); }
+        .blog-avatar-img { background: var(--peach-muted); height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--peach); }
+        .blog-avatar-content { padding: 1.5rem; }
+        .blog-avatar-footer { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+        .avatar-placeholder { width: 36px; height: 36px; background: var(--peach-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--peach); }
 
         /* Pricing */
-        .pricing-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-
-        .price-card {
-            background: rgba(255, 242, 234, 0.9);
-            border-radius: 32px;
-            flex: 1;
-            min-width: 270px;
-            padding: 2rem;
-            border: 1px solid var(--embrace-soft);
-            transition: 0.25s;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .price-card.featured {
-            border-top: 5px solid var(--embrace-deep);
-            transform: scale(1.02);
-            background: #fffbf7;
-            box-shadow: var(--glow-soft);
-        }
-
-        .price-number {
-            font-size: 2.9rem;
-            font-weight: 700;
-            color: var(--embrace-deep);
-            margin: 1rem 0;
-        }
-
-        .btn-outline {
-            border: 1.5px solid var(--embrace-deep);
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            background: transparent;
-            color: var(--embrace-deep);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-
-        .btn-outline:hover {
-            background: var(--embrace-deep);
-            color: white;
-        }
-
-        .cta-section {
-            background: linear-gradient(125deg, var(--embrace-light), #fff0e6);
-            border-radius: 52px;
-            text-align: center;
-            padding: 3rem;
-            border: 1px solid var(--embrace-soft);
-            box-shadow: var(--shadow-soft);
-        }
+        .pricing-section { padding: 5rem 0; }
+        .pricing-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+        .pricing-card { background: white; border-radius: var(--radius); flex: 1; min-width: 280px; padding: 2rem; border: 1px solid var(--border); text-align: center; transition: 0.2s; }
+        .pricing-card.featured { border-top: 4px solid var(--peach); box-shadow: 0 8px 20px rgba(0,0,0,0.05); transform: scale(1.02); }
+        .price { font-size: 2.8rem; font-weight: 800; color: var(--peach); margin: 1rem 0; }
+        .price span { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
 
         /* Privacy */
-        .privacy-section {
-            background: #fff5ef;
-            border-radius: 38px;
-            padding: 2.5rem;
-            margin: 2rem 0;
-            border: 1px solid var(--embrace-soft);
-            scroll-margin-top: 90px;
-            box-shadow: var(--shadow-soft);
-        }
+        .privacy-block { background: white; border-radius: var(--radius-sm); padding: 2rem; margin: 2rem 0; border: 1px solid var(--border); scroll-margin-top: 80px; }
+        .privacy-block h2, .privacy-block h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .privacy-block h2:first-child { margin-top: 0; }
+        .privacy-block p, .privacy-block li { color: var(--text-muted); font-size: 0.9rem; }
 
-        .privacy-section h2, .privacy-section h3 {
-            color: #3d2b1d;
-            margin-top: 1.8rem;
-            font-weight: 700;
-        }
+        /* Footer with social icons */
+        footer { background: #0f172a; color: #94a3b8; padding: 3rem 0 2rem; }
+        .footer-social { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .footer-social a { color: #94a3b8; font-size: 1.2rem; transition: 0.2s; }
+        .footer-social a:hover { color: var(--peach); }
+        .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .footer-nav a { color: #94a3b8; text-decoration: none; font-size: 0.85rem; }
+        .footer-nav a:hover { color: var(--peach); }
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--peach); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; z-index: 99; }
+        .back-to-top:hover { background: var(--peach-dark); transform: translateY(-3px); }
 
-        .privacy-section p, .privacy-section li {
-            color: #9a735b;
-        }
-
-        footer {
-            background: linear-gradient(115deg, #f0e0d4, #fae8dd);
-            color: #b08066;
-            padding: 3rem 0 2rem;
-            border-top: 1px solid var(--embrace-soft);
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: linear-gradient(115deg, var(--embrace-deep), var(--embrace-warm));
-            color: white;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: 0.2s;
-            z-index: 99;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .back-to-top:hover {
-            opacity: 1;
-            transform: translateY(-3px);
-        }
-
-        /* Modal */
-        .info-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .info-modal-content {
-            background: #fffaf5;
-            padding: 2rem;
-            border-radius: 32px;
-            max-width: 380px;
-            text-align: center;
-            border: 1px solid var(--embrace-soft);
-            box-shadow: var(--glow-soft);
-        }
-        .info-modal-content h3 { color: var(--embrace-deep); margin-bottom: 1rem; }
-        .info-modal-content p { color: #8a644c; margin-bottom: 0.5rem; }
-        .info-modal-content button {
-            margin-top: 1.5rem;
-            padding: 0.5rem 1.5rem;
-            background: var(--embrace-deep);
-            color: white;
-            border: none;
-            border-radius: 40px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 800px) {
-            .hero-text h1 { font-size: 2.2rem; }
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .hero h1 { font-size: 2.2rem; }
             .nav-wrapper { flex-direction: column; }
-            .section-header h2 { font-size: 1.9rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="embrace-pattern"></div>
-
-<div id="demoModal" class="info-modal">
-    <div class="info-modal-content">
-        <i class="fas fa-hands" style="font-size: 3rem; color: #f5a06b;"></i>
-        <h3>Embrace AI</h3>
-        <p>This is a gentle embrace. In a live environment, this would open your holding space.</p>
-        <button onclick="closeModal()">Feel the embrace</button>
-    </div>
-</div>
+<div class="preloader" id="preloader"><div class="preloader-spinner"></div></div>
 
 <nav class="navbar">
     <div class="container nav-wrapper">
-        <div class="logo">Embrace<span style="color:#f5a06b;">🤗</span></div>
+        <div class="logo">Helion<span>AI</span></div>
         <div class="nav-links">
             <a href="#home">Home</a>
-            <a href="#hold">Hold</a>
-            <a href="#warmth">Warmth</a>
+            <a href="#features">Explore</a>
+            <a href="#testimonials">Voices</a>
+            <a href="#blog">Read</a>
             <a href="#pricing">Plans</a>
-            <a href="#privacy">Trust</a>
-            <a href="#" class="btn-embrace" onclick="openModal()">Receive embrace</a>
+            <a href="#privacy">Legal</a>
+            <a href="#" class="btn-primary">Start free →</a>
         </div>
     </div>
 </nav>
 
 <main>
+    <!-- Hero -->
     <section id="home" class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <div class="hero-tag"><i class="fas fa-hands"></i> Holding intelligence</div>
-                <h1>AI that <span class="embrace-word">holds you gently</span></h1>
-                <p>Embrace AI brings soft, holding intelligence to your world. Like a warm embrace on a cool day — ethical, intuitive, and beautifully human.</p>
-                <a href="#" class="btn-primary" onclick="openModal()"><i class="fas fa-heart"></i> Step into embrace</a>
-                <div class="hero-stats">
-                    <div class="stat-item"><h3>44k+</h3><span>embraced souls</span></div>
-                    <div class="stat-item"><h3>4.99★</h3><span>warmth rating</span></div>
-                    <div class="stat-item"><h3>∞</h3><span>gentle hold</span></div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <svg width="100%" height="250" viewBox="0 0 500 270" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="500" height="270" rx="36" fill="#FFF5EE" stroke="#FFE0CC" stroke-width="1"/>
-                    <circle cx="170" cy="125" r="48" fill="#FFEFE2" stroke="#F5A06B" stroke-width="1.5"/>
-                    <circle cx="170" cy="125" r="28" fill="#FFCCAE" fill-opacity="0.5"/>
-                    <circle cx="170" cy="125" r="11" fill="#C45A2E"/>
-                    <path d="M280 105 L340 135 L280 165 L220 135 Z" fill="#FFE0CC" stroke="#F5A06B" stroke-width="1.5"/>
-                    <circle cx="280" cy="135" r="8" fill="#C45A2E" fill-opacity="0.6"/>
-                    <path d="M390 115 L410 140 L390 165 L370 140 Z" fill="#FFCCAE" stroke="#F5A06B" stroke-width="1"/>
-                    <path d="M120 210 L180 210 L150 245 Z" fill="#FFEFE2" stroke="#F5A06B" stroke-width="1"/>
-                    <path d="M320 210 L380 210 L350 245 Z" fill="#FFEFE2" stroke="#F5A06B" stroke-width="1"/>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <section id="hold">
         <div class="container">
-            <div class="section-header">
-                <h2>Ways embrace holds you</h2>
-                <p>Gentle features that feel like being held</p>
-            </div>
-            <div class="cards-grid">
-                <div class="embrace-card" onclick="openModal()"><div class="card-icon">🤗</div><h3>Embrace Chat</h3><p>Conversations that feel like a warm, supportive hug from a loved one.</p></div>
-                <div class="embrace-card" onclick="openModal()"><div class="card-icon">✨</div><h3>Holding Insights</h3><p>Beautiful, gentle analytics that arrive like a soft hand on your shoulder.</p></div>
-                <div class="embrace-card" onclick="openModal()"><div class="card-icon">🍃</div><h3>Gentle Current</h3><p>Automation that moves like a calm stream — quiet and reassuring.</p></div>
-                <div class="embrace-card" onclick="openModal()"><div class="card-icon">🕯️</div><h3>Sacred Hold</h3><p>Privacy-first, bias-aware, and transparent as pure light.</p></div>
-            </div>
+            <h1>Ask <span class="hero-highlight">anything</span>. Discover <span class="hero-highlight">everything</span>.</h1>
+            <p>Helion is the AI that helps you explore ideas, synthesize knowledge, and uncover insights — across documents, conversations, and the web.</p>
+            <a href="#" class="btn-primary">Try Helion free →</a>
         </div>
     </section>
 
-    <section id="warmth">
+    <!-- Badge Cards -->
+    <section id="features" class="badge-cards">
         <div class="container">
-            <div class="hold-row">
-                <div class="hold-cell"><i class="fas fa-feather-alt" style="font-size: 2rem; color:#c45a2e;"></i><h3 style="margin: 1rem 0 0.5rem;">Feather-soft</h3><p>Blazing fast, gentle touch</p></div>
-                <div class="hold-cell"><i class="fas fa-globe" style="font-size: 2rem; color:#c45a2e;"></i><h3 style="margin: 1rem 0 0.5rem;">62 languages</h3><p>Global embrace glow</p></div>
-                <div class="hold-cell"><i class="fas fa-shield-heart" style="font-size: 2rem; color:#c45a2e;"></i><h3 style="margin: 1rem 0 0.5rem;">Yours always</h3><p>Never trained on</p></div>
-                <div class="hold-cell"><i class="fas fa-hands" style="font-size: 2rem; color:#c45a2e;"></i><h3 style="margin: 1rem 0 0.5rem;">Warm by soul</h3><p>Built with empathy</p></div>
+            <div class="badge-grid">
+                <div class="badge-card"><span class="badge">New</span><div class="badge-icon"><i class="fas fa-search"></i></div><h3>Deep research</h3><p>Helion searches across your connected sources and synthesizes answers with citations.</p></div>
+                <div class="badge-card"><span class="badge">Beta</span><div class="badge-icon"><i class="fas fa-comments"></i></div><h3>Conversational memory</h3><p>Remembers context from weeks ago. Build on previous discussions naturally.</p></div>
+                <div class="badge-card"><div class="badge-icon"><i class="fas fa-plug"></i></div><h3>30+ connectors</h3><p>Slack, Notion, Google Drive, Confluence, and more — all in one place.</p></div>
+                <div class="badge-card"><div class="badge-icon"><i class="fas fa-chart-line"></i></div><h3>Trend detection</h3><p>Helion identifies patterns and emerging topics across your team's knowledge base.</p></div>
             </div>
         </div>
     </section>
 
-    <section id="pricing">
+    <!-- Video Preview -->
+    <div class="video-preview">
         <div class="container">
-            <div class="section-header">
-                <h2>Warm plans for every embrace</h2>
-                <p>Pricing as gentle as a hug</p>
+            <div class="video-container" onclick="alert('Product demo video would play here')">
+                <i class="fas fa-play-circle"></i>
+                <p>See Helion in action (90 seconds)</p>
+                <span style="font-size: 0.8rem; opacity: 0.7;">▶ Click to watch</span>
             </div>
-            <div class="pricing-grid">
-                <div class="price-card"><h3>Touch</h3><div class="price-number">$0</div><p>380 messages/month, basic embrace, community warmth.</p>
-                    <a href="#" class="btn-outline" style="margin-top:1.5rem; display:inline-block;" onclick="openModal()">Feel touch</a>
-                </div>
-                <div class="price-card featured"><h3>Embrace <span style="background:#ffe0cc; font-size:0.7rem; padding:0.2rem 0.6rem; border-radius:40px;">🤗 Most holding</span></h3><div class="price-number">$5<span style="font-size:1rem;">/mo</span></div><p>Unlimited messages, priority embrace, full API.</p>
-                    <a href="#" class="btn-primary" onclick="openModal()">Receive embrace</a>
-                </div>
-                <div class="price-card"><h3>Arms</h3><div class="price-number">$17<span style="font-size:1rem;">/mo</span></div><p>Team features, analytics, custom warmth.</p>
-                    <a href="#" class="btn-outline" onclick="openModal()">Open arms</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <div class="cta-section">
-            <h2 style="font-size: 2rem;">Let warm embrace hold your heart</h2>
-            <p style="margin: 1rem 0 2rem; opacity: 0.85;">Join thousands who've found soft, holding intelligence with Embrace.</p>
-            <a href="#" class="btn-primary" onclick="openModal()"><i class="fas fa-hands"></i> Start your embrace trial</a>
         </div>
     </div>
 
+    <!-- Testimonials 2 rows -->
+    <section id="testimonials" class="testimonials-2row">
+        <div class="container">
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">What teams are saying</h2>
+            <div class="testimonials-row">
+                <div class="testimonial-small"><i class="fas fa-quote-left"></i><p>"Helion cut our research time by 60%. It finds connections I would have missed completely."</p><div class="author">— Dr. Sarah Chen</div><div class="role">Head of Research</div></div>
+                <div class="testimonial-small"><i class="fas fa-quote-left"></i><p>"The memory feature is incredible. It remembers what we discussed three weeks ago."</p><div class="author">— Marcus Webb</div><div class="role">Product Director</div></div>
+            </div>
+            <div class="testimonials-row">
+                <div class="testimonial-small"><i class="fas fa-quote-left"></i><p>"Finally, an AI that understands how knowledge work actually happens."</p><div class="author">— Priya Kapoor</div><div class="role">Knowledge Manager</div></div>
+                <div class="testimonial-small"><i class="fas fa-quote-left"></i><p>"The Slack integration is a game changer. Answers in seconds, not days."</p><div class="author">— James Wilson</div><div class="role">Engineering Lead</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog with avatars -->
+    <section id="blog" class="blog-avatars">
+        <div class="container">
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 3rem;">From the Helion team</h2>
+            <div class="blog-avatar-grid">
+                <div class="blog-avatar-card"><div class="blog-avatar-img"><i class="fas fa-brain"></i></div><div class="blog-avatar-content"><span style="font-size: 0.7rem; color: var(--peach); text-transform: uppercase;">Research</span><h3 style="margin: 0.5rem 0;">Building conversational memory</h3><p>How we persist context across weeks of conversations.</p><div class="blog-avatar-footer"><div class="avatar-placeholder"><i class="fas fa-user"></i></div><span style="font-size: 0.8rem;">Dr. Emily Chen · 8 min read</span></div></div></div>
+                <div class="blog-avatar-card"><div class="blog-avatar-img"><i class="fas fa-chart-line"></i></div><div class="blog-avatar-content"><span style="font-size: 0.7rem; color: var(--peach); text-transform: uppercase;">Case Study</span><h3 style="margin: 0.5rem 0;">How a law firm saved 200 hours monthly</h3><p>Document review and legal research accelerated.</p><div class="blog-avatar-footer"><div class="avatar-placeholder"><i class="fas fa-user"></i></div><span style="font-size: 0.8rem;">Marcus Rivera · 6 min read</span></div></div></div>
+                <div class="blog-avatar-card"><div class="blog-avatar-img"><i class="fas fa-lock"></i></div><div class="blog-avatar-content"><span style="font-size: 0.7rem; color: var(--peach); text-transform: uppercase;">Security</span><h3 style="margin: 0.5rem 0;">Enterprise AI: our security architecture</h3><p>How we protect your data at every layer.</p><div class="blog-avatar-footer"><div class="avatar-placeholder"><i class="fas fa-user"></i></div><span style="font-size: 0.8rem;">Security Team · 5 min read</span></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 1rem;">Simple, transparent pricing</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">No hidden fees. Cancel anytime.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card"><h3>Free</h3><div class="price">$0<span>/month</span></div><ul style="list-style: none; margin: 1rem 0;"><li style="padding: 0.3rem 0;">✓ 500 queries/month</li><li style="padding: 0.3rem 0;">✓ Basic search</li><li style="padding: 0.3rem 0;">✓ Community support</li></ul><a href="#" class="btn-outline">Get started</a></div>
+                <div class="pricing-card featured"><h3>Pro</h3><div class="price">$29<span>/month</span></div><ul style="list-style: none; margin: 1rem 0;"><li style="padding: 0.3rem 0;">✓ 10K queries/month</li><li style="padding: 0.3rem 0;">✓ Full memory</li><li style="padding: 0.3rem 0;">✓ Priority support</li><li style="padding: 0.3rem 0;">✓ All connectors</li></ul><a href="#" class="btn-primary">Start trial</a></div>
+                <div class="pricing-card"><h3>Enterprise</h3><div class="price">Custom</div><ul style="list-style: none; margin: 1rem 0;"><li style="padding: 0.3rem 0;">✓ Unlimited queries</li><li style="padding: 0.3rem 0;">✓ On‑prem deployment</li><li style="padding: 0.3rem 0;">✓ Dedicated support</li><li style="padding: 0.3rem 0;">✓ SOC2 / HIPAA</li></ul><a href="#" class="btn-outline">Contact sales</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy -->
     <div class="container" id="privacy">
-        <div class="privacy-section">
-            <h2><i class="fas fa-leaf" style="color:#f5a06b;"></i> Sacred Embrace — Our Holding Vow</h2>
-            <p><strong>Last gentle embrace:</strong> May 2025 | Embrace Labs holds your trust as warmly as an embrace.</p>
-            
-            <h3>1. What we gather</h3>
-            <p>Account essence, conversation embrace (encrypted at rest), and gentle usage echoes. You remain the sole owner of your held light.</p>
-            
-            <h3>2. How your light is honoured</h3>
-            <p>To nurture our AI, personalise your journey, handle billing, and support you. Zero selling. Zero advertising training. Zero dark patterns.</p>
-            
-            <h3>3. Keeping your embrace safe</h3>
-            <p>You may delete any conversation instantly. Account data vanishes when you wish. Full gentle export available anytime.</p>
-            
-            <h3>4. Trusted guardians</h3>
-            <p>We partner with secure infrastructure providers under strict data pledges. All data travels encrypted and rests encrypted.</p>
-            
-            <h3>5. Your held rights</h3>
-            <p>Access, correct, delete, restrict, or take your data elsewhere. Our privacy team is always here for you.</p>
-            
-            <h3>6. Young souls</h3>
-            <p>Embrace is crafted for humans 16 and over. We do not knowingly collect from younger hearts.</p>
-            
-            <h3>7. Across borders</h3>
-            <p>Data may travel the globe under Standard Contractual Clauses — always protected, always respected.</p>
-            
-            <h3>8. When embrace evolves</h3>
-            <p>Material changes will be shared with you. Our Data Protection Officer is always available.</p>
-            <p style="margin-top:1.5rem;"><i class="fas fa-hands" style="color:#f5a06b;"></i> Embrace — Intelligence that holds you gently.</p>
+        <div class="privacy-block">
+            <h2><i class="fas fa-shield-alt" style="color: var(--peach);"></i> Privacy Policy</h2>
+            <p><strong>Effective:</strong> May 2025 | Helion AI Inc.</p>
+            <h3>1. Information collection</h3><p>Account data, search queries, and usage patterns. Your documents are never used for training public models.</p>
+            <h3>2. Data usage</h3><p>To provide search and discovery services, improve relevance, process payments, and ensure security. No selling.</p>
+            <h3>3. Your rights</h3><p>Access, correct, delete, export. Email privacy@helion.ai</p>
+            <h3>4. Security</h3><p>AES‑256, TLS 1.3, regular audits.</p>
+            <p><strong>Contact:</strong> dpo@helion.ai | Helion AI, 101 Discovery Way, San Francisco, CA 94105</p>
         </div>
     </div>
 </main>
 
+<!-- Footer with social icons -->
 <footer>
     <div class="container">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
-            <div>
-                <h3 style="color:#3d2b1d;">Embrace<span style="color:#f5a06b;">🤗</span></h3>
-                <p style="max-width: 210px; margin-top: 0.5rem;">Your warm embrace of wisdom.</p>
-                <div style="margin-top: 1rem;">
-                    <a href="#" onclick="openModal(); return false;" style="color:#b08066; margin-right: 1rem;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" onclick="openModal(); return false;" style="color:#b08066; margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" onclick="openModal(); return false;" style="color:#b08066;"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4>Hold</h4>
-                <p><a href="#hold" style="color:#b08066; text-decoration:none;">Features</a><br>
-                   <a href="#pricing" style="color:#b08066; text-decoration:none;">Pricing</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">API</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Status</a></p>
-            </div>
-            <div>
-                <h4>Resources</h4>
-                <p><a href="#" onclick="openModal(); return false;" style="color:#b08066;">Journal</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Guide</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Community</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Support</a></p>
-            </div>
-            <div>
-                <h4>Trust</h4>
-                <p><a href="#privacy" style="color:#b08066; text-decoration:none;">Privacy Vow</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Terms of Embrace</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Ethics Charter</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Security</a></p>
-            </div>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
         </div>
-        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #ffe0cc; margin-top: 2rem; font-size: 0.8rem;">
-            <p>© 2025 Embrace Labs — Intelligence that holds you gently.</p>
-            <p style="margin-top: 0.5rem;">Held in trust · Warmed in grace</p>
+        <div class="footer-nav">
+            <a href="#home">Home</a>
+            <a href="#features">Explore</a>
+            <a href="#testimonials">Voices</a>
+            <a href="#blog">Read</a>
+            <a href="#pricing">Plans</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#">Terms</a>
         </div>
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #334155; font-size: 0.75rem;">© 2025 Helion AI — Intelligence for the curious</div>
     </div>
 </footer>
+
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
 <script>
     window.addEventListener('load', function() {
         const preloader = document.getElementById('preloader');
@@ -672,34 +265,7 @@
         });
     });
 </script>
-<a href="#" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"><i class="fas fa-arrow-up"></i></a>
+
 <script src="protection.js"></script>
-<script>
-    function openModal() {
-        document.getElementById('demoModal').style.display = 'flex';
-    }
-    function closeModal() {
-        document.getElementById('demoModal').style.display = 'none';
-    }
-    window.onclick = function(event) {
-        let modal = document.getElementById('demoModal');
-        if (event.target === modal) modal.style.display = 'none';
-    }
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === "#" || href === "") return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-    document.querySelector('.back-to-top').addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
 </body>
 </html>
