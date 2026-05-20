@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Helion AI · Intelligence for the Curious</title>
+    <title>Lumina AI · The Intelligence Weaver</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -46,46 +46,42 @@
         .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; max-width: 800px; margin: 0 auto 1rem; letter-spacing: -0.02em; }
         .hero-highlight { color: var(--peach); }
         .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-        /* Badge Cards */
-        .badge-cards { padding: 4rem 0; }
-        .badge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .badge-card { background: white; border-radius: var(--radius-sm); padding: 1.8rem; border: 1px solid var(--border); transition: 0.2s; position: relative; }
-        .badge-card:hover { transform: translateY(-5px); border-color: var(--peach-soft); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08); }
-        .badge { position: absolute; top: 1rem; right: 1rem; background: var(--peach-bg); color: var(--peach); font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 100px; font-weight: 600; }
-        .badge-icon { width: 50px; height: 50px; background: var(--peach-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
-        .badge-icon i { font-size: 1.5rem; color: var(--peach); }
+        /* 4 vertical cards */
+        .vert-cards { padding: 5rem 0; }
+        .vert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .vert-item { background: white; border-radius: var(--radius-sm); padding: 2rem; border: 1px solid var(--border); text-align: center; transition: 0.2s; }
+        .vert-item:hover { transform: translateY(-6px); border-color: var(--peach-soft); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08); }
+        .vert-icon { width: 64px; height: 64px; background: var(--peach-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+        .vert-icon i { font-size: 1.8rem; color: var(--peach); }
 
-        /* Video Preview */
+        /* Video preview */
         .video-preview { padding: 4rem 0; background: var(--peach-bg); }
-        .video-container { max-width: 900px; margin: 0 auto; background: #1e293b; border-radius: var(--radius); padding: 4rem 2rem; text-align: center; cursor: pointer; transition: 0.2s; }
-        .video-container:hover { background: var(--peach-dark); }
-        .video-container i { font-size: 4rem; color: white; margin-bottom: 1rem; display: block; }
-        .video-container p { color: white; font-size: 1.2rem; }
+        .video-box { max-width: 900px; margin: 0 auto; background: #1e293b; border-radius: var(--radius); padding: 4rem 2rem; text-align: center; cursor: pointer; transition: 0.2s; }
+        .video-box:hover { background: var(--peach-dark); }
+        .video-box i { font-size: 4rem; color: white; margin-bottom: 1rem; display: block; }
 
-        /* Testimonials 2 rows */
-        .testimonials-2row { padding: 5rem 0; }
-        .testimonials-row { display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; justify-content: center; }
-        .testimonial-small { flex: 1; min-width: 280px; background: white; border-radius: var(--radius-sm); padding: 1.5rem; border: 1px solid var(--border); }
-        .testimonial-small i { color: var(--peach); margin-bottom: 0.5rem; display: block; font-size: 1.2rem; }
-        .testimonial-small .author { margin-top: 1rem; font-weight: 600; }
-        .testimonial-small .role { font-size: 0.7rem; color: var(--text-muted); }
+        /* Numbers grid */
+        .numbers { padding: 4rem 0; background: white; }
+        .numbers-flex { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; text-align: center; }
+        .number-stat h3 { font-size: 2.8rem; font-weight: 800; color: var(--peach); }
+        .number-stat p { color: var(--text-muted); font-size: 0.9rem; }
 
-        /* Blog with avatars */
-        .blog-avatars { padding: 5rem 0; background: #f9fafb; }
-        .blog-avatar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .blog-avatar-card { background: white; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); transition: 0.2s; }
-        .blog-avatar-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1); }
-        .blog-avatar-img { background: var(--peach-muted); height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--peach); }
-        .blog-avatar-content { padding: 1.5rem; }
-        .blog-avatar-footer { display: flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-        .avatar-placeholder { width: 36px; height: 36px; background: var(--peach-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--peach); }
+        /* Horizontal blog scroll */
+        .blog-scroll { padding: 5rem 0; background: #f9fafb; }
+        .scroll-horiz { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1rem; }
+        .scroll-card { min-width: 320px; background: white; border-radius: var(--radius-sm); padding: 1.5rem; border: 1px solid var(--border); transition: 0.2s; }
+        .scroll-card:hover { transform: translateY(-4px); border-color: var(--peach-soft); }
+        .scroll-tag { font-size: 0.7rem; color: var(--peach); text-transform: uppercase; letter-spacing: 1px; }
+        .scroll-card h3 { margin: 0.5rem 0; font-size: 1.2rem; }
 
         /* Pricing */
         .pricing-section { padding: 5rem 0; }
         .pricing-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-        .pricing-card { background: white; border-radius: var(--radius); flex: 1; min-width: 280px; padding: 2rem; border: 1px solid var(--border); text-align: center; transition: 0.2s; }
+        .pricing-card { background: white; border-radius: var(--radius); flex: 1; min-width: 280px; padding: 2rem; border: 1px solid var(--border); text-align: center; transition: 0.2s; position: relative; }
         .pricing-card.featured { border-top: 4px solid var(--peach); box-shadow: 0 8px 20px rgba(0,0,0,0.05); transform: scale(1.02); }
+        .badge-popular { position: absolute; top: -12px; right: 20px; background: var(--peach); color: white; font-size: 0.7rem; padding: 0.2rem 0.8rem; border-radius: 100px; }
         .price { font-size: 2.8rem; font-weight: 800; color: var(--peach); margin: 1rem 0; }
         .price span { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
 
@@ -95,14 +91,18 @@
         .privacy-block h2:first-child { margin-top: 0; }
         .privacy-block p, .privacy-block li { color: var(--text-muted); font-size: 0.9rem; }
 
-        /* Footer with social icons */
+        /* Footer 2 columns */
         footer { background: #0f172a; color: #94a3b8; padding: 3rem 0 2rem; }
-        .footer-social { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
-        .footer-social a { color: #94a3b8; font-size: 1.2rem; transition: 0.2s; }
-        .footer-social a:hover { color: var(--peach); }
-        .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
-        .footer-nav a { color: #94a3b8; text-decoration: none; font-size: 0.85rem; }
-        .footer-nav a:hover { color: var(--peach); }
+        .footer-two { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 3rem; margin-bottom: 2rem; }
+        .footer-brand { max-width: 300px; }
+        .footer-brand h3 { color: white; margin-bottom: 0.5rem; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 3rem; }
+        .footer-links-col h4 { color: white; margin-bottom: 1rem; }
+        .footer-links-col a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 0.5rem; font-size: 0.85rem; }
+        .footer-links-col a:hover { color: var(--peach); }
+        .social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
+        .social-icons a { color: #94a3b8; font-size: 1.2rem; }
+        .social-icons a:hover { color: var(--peach); }
         .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--peach); color: white; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; z-index: 99; }
         .back-to-top:hover { background: var(--peach-dark); transform: translateY(-3px); }
 
@@ -110,6 +110,7 @@
             .container { padding: 0 20px; }
             .hero h1 { font-size: 2.2rem; }
             .nav-wrapper { flex-direction: column; }
+            .footer-two { flex-direction: column; }
         }
     </style>
 </head>
@@ -119,13 +120,12 @@
 
 <nav class="navbar">
     <div class="container nav-wrapper">
-        <div class="logo">Helion<span>AI</span></div>
+        <div class="logo">Lumina<span>AI</span></div>
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#features">Explore</a>
-            <a href="#testimonials">Voices</a>
             <a href="#blog">Read</a>
-            <a href="#pricing">Plans</a>
+            <a href="#pricing">Pricing</a>
             <a href="#privacy">Legal</a>
             <a href="#" class="btn-primary">Start free →</a>
         </div>
@@ -136,58 +136,58 @@
     <!-- Hero -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>Ask <span class="hero-highlight">anything</span>. Discover <span class="hero-highlight">everything</span>.</h1>
-            <p>Helion is the AI that helps you explore ideas, synthesize knowledge, and uncover insights — across documents, conversations, and the web.</p>
-            <a href="#" class="btn-primary">Try Helion free →</a>
-        </div>
-    </section>
-
-    <!-- Badge Cards -->
-    <section id="features" class="badge-cards">
-        <div class="container">
-            <div class="badge-grid">
-                <div class="badge-card"><span class="badge">New</span><div class="badge-icon"><i class="fas fa-search"></i></div><h3>Deep research</h3><p>Helion searches across your connected sources and synthesizes answers with citations.</p></div>
-                <div class="badge-card"><span class="badge">Beta</span><div class="badge-icon"><i class="fas fa-comments"></i></div><h3>Conversational memory</h3><p>Remembers context from weeks ago. Build on previous discussions naturally.</p></div>
-                <div class="badge-card"><div class="badge-icon"><i class="fas fa-plug"></i></div><h3>30+ connectors</h3><p>Slack, Notion, Google Drive, Confluence, and more — all in one place.</p></div>
-                <div class="badge-card"><div class="badge-icon"><i class="fas fa-chart-line"></i></div><h3>Trend detection</h3><p>Helion identifies patterns and emerging topics across your team's knowledge base.</p></div>
+            <h1><span class="hero-highlight">Weave</span> knowledge into answers</h1>
+            <p>Lumina connects your scattered documents, messages, and data into one intelligent layer. Ask anything. Get answers instantly.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Try Lumina free →</a>
+                <a href="#" class="btn-outline">Book a demo</a>
             </div>
         </div>
     </section>
 
-    <!-- Video Preview -->
+    <!-- 4 vertical cards -->
+    <section id="features" class="vert-cards">
+        <div class="container">
+            <div class="vert-grid">
+                <div class="vert-item"><div class="vert-icon"><i class="fas fa-search"></i></div><h3>Unified search</h3><p>Search across Slack, Notion, GDrive, and 30+ other tools from one place.</p></div>
+                <div class="vert-item"><div class="vert-icon"><i class="fas fa-memory"></i></div><h3>Persistent memory</h3><p>Lumina remembers what you asked weeks ago. Build on previous conversations.</p></div>
+                <div class="vert-item"><div class="vert-icon"><i class="fas fa-chart-line"></i></div><h3>Knowledge graphs</h3><p>See how ideas, documents, and people connect across your organization.</p></div>
+                <div class="vert-item"><div class="vert-icon"><i class="fas fa-shield-alt"></i></div><h3>Enterprise grade</h3><p>SOC2, GDPR, HIPAA ready. Your data never leaves your control.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video preview -->
     <div class="video-preview">
         <div class="container">
-            <div class="video-container" onclick="alert('Product demo video would play here')">
+            <div class="video-box" onclick="alert('Product demo would play here')">
                 <i class="fas fa-play-circle"></i>
-                <p>See Helion in action (90 seconds)</p>
+                <p>See Lumina in action (90 sec demo)</p>
                 <span style="font-size: 0.8rem; opacity: 0.7;">▶ Click to watch</span>
             </div>
         </div>
     </div>
 
-    <!-- Testimonials 2 rows -->
-    <section id="testimonials" class="testimonials-2row">
+    <!-- Numbers -->
+    <div class="numbers">
         <div class="container">
-            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">What teams are saying</h2>
-            <div class="testimonials-row">
-                <div class="testimonial-small"><i class="fas fa-quote-left"></i><p>"Helion cut our research time by 60%. It finds connections I would have missed completely."</p><div class="author">— Dr. Sarah Chen</div><div class="role">Head of Research</div></div>
-                <div class="testimonial-small"><i class="fas fa-quote-left"></i><p>"The memory feature is incredible. It remembers what we discussed three weeks ago."</p><div class="author">— Marcus Webb</div><div class="role">Product Director</div></div>
-            </div>
-            <div class="testimonials-row">
-                <div class="testimonial-small"><i class="fas fa-quote-left"></i><p>"Finally, an AI that understands how knowledge work actually happens."</p><div class="author">— Priya Kapoor</div><div class="role">Knowledge Manager</div></div>
-                <div class="testimonial-small"><i class="fas fa-quote-left"></i><p>"The Slack integration is a game changer. Answers in seconds, not days."</p><div class="author">— James Wilson</div><div class="role">Engineering Lead</div></div>
+            <div class="numbers-flex">
+                <div class="number-stat"><h3>87%</h3><p>faster find time</p></div>
+                <div class="number-stat"><h3>50+</h3><p>integrations</p></div>
+                <div class="number-stat"><h3>2.5M</h3><p>documents indexed</p></div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Blog with avatars -->
-    <section id="blog" class="blog-avatars">
+    <!-- Horizontal blog scroll -->
+    <section id="blog" class="blog-scroll">
         <div class="container">
-            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 3rem;">From the Helion team</h2>
-            <div class="blog-avatar-grid">
-                <div class="blog-avatar-card"><div class="blog-avatar-img"><i class="fas fa-brain"></i></div><div class="blog-avatar-content"><span style="font-size: 0.7rem; color: var(--peach); text-transform: uppercase;">Research</span><h3 style="margin: 0.5rem 0;">Building conversational memory</h3><p>How we persist context across weeks of conversations.</p><div class="blog-avatar-footer"><div class="avatar-placeholder"><i class="fas fa-user"></i></div><span style="font-size: 0.8rem;">Dr. Emily Chen · 8 min read</span></div></div></div>
-                <div class="blog-avatar-card"><div class="blog-avatar-img"><i class="fas fa-chart-line"></i></div><div class="blog-avatar-content"><span style="font-size: 0.7rem; color: var(--peach); text-transform: uppercase;">Case Study</span><h3 style="margin: 0.5rem 0;">How a law firm saved 200 hours monthly</h3><p>Document review and legal research accelerated.</p><div class="blog-avatar-footer"><div class="avatar-placeholder"><i class="fas fa-user"></i></div><span style="font-size: 0.8rem;">Marcus Rivera · 6 min read</span></div></div></div>
-                <div class="blog-avatar-card"><div class="blog-avatar-img"><i class="fas fa-lock"></i></div><div class="blog-avatar-content"><span style="font-size: 0.7rem; color: var(--peach); text-transform: uppercase;">Security</span><h3 style="margin: 0.5rem 0;">Enterprise AI: our security architecture</h3><p>How we protect your data at every layer.</p><div class="blog-avatar-footer"><div class="avatar-placeholder"><i class="fas fa-user"></i></div><span style="font-size: 0.8rem;">Security Team · 5 min read</span></div></div></div>
+            <h2 style="font-size: 2rem; text-align: center; margin-bottom: 2rem;">From the Lumina team</h2>
+            <div class="scroll-horiz">
+                <div class="scroll-card"><div class="scroll-tag">Research</div><h3>Building persistent memory for AI</h3><p>How we solved context retention across weeks of conversations.</p><div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">May 19, 2025 · 8 min read</div></div>
+                <div class="scroll-card"><div class="scroll-tag">Case Study</div><h3>How a law firm saved 200 hours monthly</h3><p>Document discovery and research accelerated with Lumina.</p><div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">May 14, 2025 · 6 min read</div></div>
+                <div class="scroll-card"><div class="scroll-tag">Tutorial</div><h3>Getting started with knowledge graphs</h3><p>Map your organization's hidden connections.</p><div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">May 8, 2025 · 5 min read</div></div>
+                <div class="scroll-card"><div class="scroll-tag">Product</div><h3>What's new in Lumina 2.0</h3><p>Introducing persistent memory and 20+ new connectors.</p><div style="margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">May 2, 2025 · 4 min read</div></div>
             </div>
         </div>
     </section>
@@ -198,8 +198,8 @@
             <h2 style="font-size: 2rem; text-align: center; margin-bottom: 1rem;">Simple, transparent pricing</h2>
             <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">No hidden fees. Cancel anytime.</p>
             <div class="pricing-grid">
-                <div class="pricing-card"><h3>Free</h3><div class="price">$0<span>/month</span></div><ul style="list-style: none; margin: 1rem 0;"><li style="padding: 0.3rem 0;">✓ 500 queries/month</li><li style="padding: 0.3rem 0;">✓ Basic search</li><li style="padding: 0.3rem 0;">✓ Community support</li></ul><a href="#" class="btn-outline">Get started</a></div>
-                <div class="pricing-card featured"><h3>Pro</h3><div class="price">$29<span>/month</span></div><ul style="list-style: none; margin: 1rem 0;"><li style="padding: 0.3rem 0;">✓ 10K queries/month</li><li style="padding: 0.3rem 0;">✓ Full memory</li><li style="padding: 0.3rem 0;">✓ Priority support</li><li style="padding: 0.3rem 0;">✓ All connectors</li></ul><a href="#" class="btn-primary">Start trial</a></div>
+                <div class="pricing-card"><h3>Free</h3><div class="price">$0<span>/month</span></div><ul style="list-style: none; margin: 1rem 0;"><li style="padding: 0.3rem 0;">✓ 500 queries/month</li><li style="padding: 0.3rem 0;">✓ 3 integrations</li><li style="padding: 0.3rem 0;">✓ Community support</li></ul><a href="#" class="btn-outline">Get started</a></div>
+                <div class="pricing-card featured"><div class="badge-popular">Most popular</div><h3>Pro</h3><div class="price">$29<span>/month</span></div><ul style="list-style: none; margin: 1rem 0;"><li style="padding: 0.3rem 0;">✓ 10K queries/month</li><li style="padding: 0.3rem 0;">✓ All 50+ integrations</li><li style="padding: 0.3rem 0;">✓ Priority support</li><li style="padding: 0.3rem 0;">✓ Knowledge graphs</li></ul><a href="#" class="btn-primary">Start trial</a></div>
                 <div class="pricing-card"><h3>Enterprise</h3><div class="price">Custom</div><ul style="list-style: none; margin: 1rem 0;"><li style="padding: 0.3rem 0;">✓ Unlimited queries</li><li style="padding: 0.3rem 0;">✓ On‑prem deployment</li><li style="padding: 0.3rem 0;">✓ Dedicated support</li><li style="padding: 0.3rem 0;">✓ SOC2 / HIPAA</li></ul><a href="#" class="btn-outline">Contact sales</a></div>
             </div>
         </div>
@@ -209,35 +209,37 @@
     <div class="container" id="privacy">
         <div class="privacy-block">
             <h2><i class="fas fa-shield-alt" style="color: var(--peach);"></i> Privacy Policy</h2>
-            <p><strong>Effective:</strong> May 2025 | Helion AI Inc.</p>
-            <h3>1. Information collection</h3><p>Account data, search queries, and usage patterns. Your documents are never used for training public models.</p>
-            <h3>2. Data usage</h3><p>To provide search and discovery services, improve relevance, process payments, and ensure security. No selling.</p>
-            <h3>3. Your rights</h3><p>Access, correct, delete, export. Email privacy@helion.ai</p>
-            <h3>4. Security</h3><p>AES‑256, TLS 1.3, regular audits.</p>
-            <p><strong>Contact:</strong> dpo@helion.ai | Helion AI, 101 Discovery Way, San Francisco, CA 94105</p>
+            <p><strong>Effective:</strong> May 2025 | Lumina AI Inc.</p>
+            <h3>1. Information collection</h3><p>Account data, search queries, and usage patterns. Your documents and conversations are never used for training public models.</p>
+            <h3>2. Data usage</h3><p>To provide search and knowledge services, improve relevance, process payments, and ensure security. No selling.</p>
+            <h3>3. Your rights</h3><p>Access, correct, delete, export. Email privacy@lumina.ai</p>
+            <h3>4. Security</h3><p>AES‑256, TLS 1.3, regular audits. SOC2 Type II certified.</p>
+            <p><strong>Contact:</strong> dpo@lumina.ai | Lumina AI, 101 Discovery Way, San Francisco, CA 94105</p>
         </div>
     </div>
 </main>
 
-<!-- Footer with social icons -->
+<!-- Footer 2 columns -->
 <footer>
     <div class="container">
-        <div class="footer-social">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
+        <div class="footer-two">
+            <div class="footer-brand">
+                <h3>Lumina<span style="color:#f97316;">AI</span></h3>
+                <p style="font-size: 0.8rem; margin-top: 0.5rem;">The intelligence weaver</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-col"><h4>Product</h4><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#">API</a><a href="#">Status</a></div>
+                <div class="footer-links-col"><h4>Resources</h4><a href="#blog">Blog</a><a href="#">Docs</a><a href="#">Support</a><a href="#">Community</a></div>
+                <div class="footer-links-col"><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#privacy">Privacy</a><a href="#">Terms</a></div>
+            </div>
         </div>
-        <div class="footer-nav">
-            <a href="#home">Home</a>
-            <a href="#features">Explore</a>
-            <a href="#testimonials">Voices</a>
-            <a href="#blog">Read</a>
-            <a href="#pricing">Plans</a>
-            <a href="#privacy">Privacy</a>
-            <a href="#">Terms</a>
-        </div>
-        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #334155; font-size: 0.75rem;">© 2025 Helion AI — Intelligence for the curious</div>
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #334155; font-size: 0.75rem;">© 2025 Lumina AI — Weaving knowledge into answers</div>
     </div>
 </footer>
 
